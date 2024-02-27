@@ -132,85 +132,86 @@
     </div>
 </div>
 <script>
-   function myMenuFunction() {
-                var i = document.getElementById("navMenu");
-                if (i.className === "nav-menu") {
-                    i.className += " responsive";
-                } else {
-                    i.className = "nav-menu";
-                }
-            }
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+        if (i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
 
-            var a = document.getElementById("loginBtn");
-            var b = document.getElementById("registerBtn");
-            var x = document.getElementById("login");
-            var y = document.getElementById("register");
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
 
-            function login() {
-                x.style.left = "4px";
-                y.style.right = "-520px";
-                a.classList.add("white-btn");
-                b.classList.remove("white-btn");
-                x.style.opacity = 1;
-                y.style.opacity = 0;
-            }
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.classList.add("white-btn");
+        b.classList.remove("white-btn");
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
 
-            function register() {
-                x.style.left = "-510px";
-                y.style.right = "5px";
-                a.classList.remove("white-btn");
-                b.classList.add("white-btn");
-                x.style.opacity = 0;
-                y.style.opacity = 1;
-            }
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.classList.remove("white-btn");
+        b.classList.add("white-btn");
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
 </script>
- <script>
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const registerForm = document.getElementById('registrationForm');
-                registerForm.addEventListener('submit', function (event) {
-                    event.preventDefault();
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const registerForm = document.getElementById('registrationForm');
+        registerForm.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-                    const firstname = document.getElementById('firstname').value;
-                    const lastname = document.getElementById('lastname').value;
-                    const email = document.getElementById('email').value;
-                    const password = document.getElementById('password').value;
-                    const userData = {
-                        firstname: firstname,
-                        lastname: lastname,
-                        email: email,
-                        password: password
-                    };
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userData = {
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                password: password
+            };
 
-                    fetch('http://panel.mait.ac.in:8001/auth/register/', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(userData),
-                        })
-                        .then(response => {
-                            console.log('Response status:', response.status);
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Response data:', data);
-                            if (data && data.success) {
-                                alert('Registration Successful');
-                                window.location.href = "index.html";
-                            } else {
-                                throw new Error('Registration failed');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('Registration failed. Please try again');
-                        });
+            fetch('http://panel.mait.ac.in:8001/auth/register/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),
+                })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response data:', data);
+                    if (data && data.success) {
+                        alert('Registration Successful');
+                        window.location.href = "index.html";
+                    } else {
+                        throw new Error('Registration failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Registration failed. Please try again');
                 });
-                </script>
-    
-    <script>
-            document.addEventListener('DOMContentLoaded', function () {
+        });
+    });
+</script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -223,41 +224,29 @@
         };
 
         fetch('http://panel.mait.ac.in:8001/auth/login/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(loginData),
-            })
-            .then(response => {
-                console.log('Response status:', response.status);
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response data:', data);
-                if (data && data.success) {
-                    alert('Login Successful');
-                    // Redirect or perform other actions after successful login
-                } else {
-                    throw new Error('Login failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Login failed. Please try again');
-            });
-    });
-});
-    </script>
-    <script>
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        })
+        .then(response => {
+            console.log('Response status:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response data:', data);
+            if (data && data.success) {
+                alert('Login Successful');
+                // Redirect or perform other actions after successful login
 
-                const poemPublishSection = document.querySelector('.poem-publish');
-                const poemForm = document.getElementById('poemForm');
-
-                const isLoggedIn = true; 
+                // Check if the user is logged in before displaying the poem section
+                const isLoggedIn = true;
                 if (isLoggedIn) {
+                    const poemPublishSection = document.querySelector('.poem-publish');
                     poemPublishSection.style.display = 'block';
 
+                    const poemForm = document.getElementById('poemForm');
                     poemForm.addEventListener('submit', function (event) {
                         event.preventDefault();
 
@@ -270,26 +259,35 @@
                         };
 
                         fetch('http://panel.mait.ac.in:8001/poems', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(poemData),
-                            })
-                            .then(response => {
-                                if (response.ok) {
-                                    alert('Poem Published Successfully');
-                                } else {
-                                    throw new Error('Poem publishing failed');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                alert('Poem publishing failed. Please try again');
-                            });
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(poemData),
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('Poem Published Successfully');
+                            } else {
+                                throw new Error('Poem publishing failed');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Poem publishing failed. Please try again');
+                        });
                     });
                 }
-            });
-    </script>
+            } else {
+                throw new Error('Login failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Login failed. Please try again');
+        });
+    });
+});
+</script>
 </body>
 </html>
