@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>B.Y.T.E. | Login & Registration</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>POEM.</p>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/byte__official/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://byte-mait.netlify.app/home" target="_blank">
+                    <i class="fas fa-brain"></i>
+                </a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#" class="link active">Home</a></li>
+                    <li><a href="#" class="link">Blog</a></li>
+                    <li><a href="#" class="link">Services</a></li>
+                    <li><a href="#" class="link">About</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        
+        <!------------------- login form -------------------------->
+        <div class="login-container" id="login">
+            <div class="top">
+                <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+                <header>Login</header>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Username or Email">
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="Password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Sign In">
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Forgot password?</a></label>
+                </div>
+            </div>
+        </div>
+        <!------------------- registration form -------------------------->
+    <div class="register-container" id="register">
+        <div class="top">
+          <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+          <header>Sign Up</header>
+    </div>
+    <form id="registrationForm">
+        <div class="two-forms">
+            <div class="input-box">
+                <input type="text" id="firstname" class="input-field" placeholder="Firstname">
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" id="lastname" class="input-field" placeholder="Lastname">
+                <i class="bx bx-user"></i>
+            </div>
+        </div>
+        <div class="input-box">
+            <input type="text" id="email" class="input-field" placeholder="Email">
+            <i class="bx bx-envelope"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" class="input-field" placeholder="Password">
+            <i class="bx bx-lock-alt"></i>
+        </div>
+        <div class="input-box">
+            <input type="submit" class="submit" value="Register">
+        </div>
+        <div class="two-col">
+            <div class="one">
+                <input type="checkbox" id="register-check">
+                <label for="register-check"> Remember Me</label>
+            </div>
+            <div class="two">
+                <label><a href="#">Terms & conditions</a></label>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+    <!-- Poem Publishing Section -->
+    <div class="poem-publish" id="poemPublishSection" style="display: none;">
+        <h2>Publish Your Poem</h2>
+        <form id="poemForm">
+            <div class="input-field">
+                <label for="poemTitle">Poem Title</label>
+                <input type="text" name="poemTitle" id="poemTitle" placeholder="Enter title">
+            </div>
+
+            <div class="input-field">
+                <label for="poemContent">Poem Content</label>
+                <textarea name="poemContent" id="poemContent" placeholder="Write your poem"></textarea>
+            </div>
+
+            <div class="input-field">
+                <input type="submit" value="Publish Poem">
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+   function myMenuFunction() {
+                var i = document.getElementById("navMenu");
+                if (i.className === "nav-menu") {
+                    i.className += " responsive";
+                } else {
+                    i.className = "nav-menu";
+                }
+            }
+
+            var a = document.getElementById("loginBtn");
+            var b = document.getElementById("registerBtn");
+            var x = document.getElementById("login");
+            var y = document.getElementById("register");
+
+            function login() {
+                x.style.left = "4px";
+                y.style.right = "-520px";
+                a.classList.add("white-btn");
+                b.classList.remove("white-btn");
+                x.style.opacity = 1;
+                y.style.opacity = 0;
+            }
+
+            function register() {
+                x.style.left = "-510px";
+                y.style.right = "5px";
+                a.classList.remove("white-btn");
+                b.classList.add("white-btn");
+                x.style.opacity = 0;
+                y.style.opacity = 1;
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const registerForm = document.getElementById('registrationForm');
+                registerForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    const firstname = document.getElementById('firstname').value;
+                    const lastname = document.getElementById('lastname').value;
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    const userData = {
+                        firstname: firstname,
+                        lastname: lastname,
+                        email: email,
+                        password: password
+                    };
+
+                    fetch('http://panel.mait.ac.in:8001/auth/register/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(userData),
+                        })
+                        .then(response => {
+                            console.log('Response status:', response.status);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Response data:', data);
+                            if (data && data.success) {
+                                alert('Registration Successful');
+                                window.location.href = "index.html";
+                            } else {
+                                throw new Error('Registration failed');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Registration failed. Please try again');
+                        });
+                });
+
+                const poemPublishSection = document.querySelector('.poem-publish');
+                const poemForm = document.getElementById('poemForm');
+
+                const isLoggedIn = true; 
+                if (isLoggedIn) {
+                    poemPublishSection.style.display = 'block';
+
+                    poemForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+
+                        const poemTitle = document.getElementById('poemTitle').value;
+                        const poemContent = document.getElementById('poemContent').value;
+
+                        const poemData = {
+                            title: poemTitle,
+                            content: poemContent,
+                        };
+
+                        fetch('http://panel.mait.ac.in:8001/poems', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(poemData),
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    alert('Poem Published Successfully');
+                                } else {
+                                    throw new Error('Poem publishing failed');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('Poem publishing failed. Please try again');
+                            });
+                    });
+                }
+            });
+        </script>
+</script>
+</body>
+</html>
