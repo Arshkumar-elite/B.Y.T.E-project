@@ -163,6 +163,8 @@
                 x.style.opacity = 0;
                 y.style.opacity = 1;
             }
+</script>
+ <script>
 
             document.addEventListener('DOMContentLoaded', function () {
                 const registerForm = document.getElementById('registrationForm');
@@ -205,6 +207,49 @@
                             alert('Registration failed. Please try again');
                         });
                 });
+                </script>
+    
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const usernameOrEmail = document.getElementById('loginUsernameOrEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        const loginData = {
+            usernameOrEmail: usernameOrEmail,
+            password: password
+        };
+
+        fetch('http://panel.mait.ac.in:8001/auth/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginData),
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                if (data && data.success) {
+                    alert('Login Successful');
+                    // Redirect or perform other actions after successful login
+                } else {
+                    throw new Error('Login failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Login failed. Please try again');
+            });
+    });
+});
+    </script>
+    <script>
 
                 const poemPublishSection = document.querySelector('.poem-publish');
                 const poemForm = document.getElementById('poemForm');
@@ -245,7 +290,6 @@
                     });
                 }
             });
-        </script>
-</script>
+    </script>
 </body>
 </html>
