@@ -7,126 +7,430 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>B.Y.T.E. | Login & Registration</title>
+    <title>B.Y.T.E. | Publish Your Poems</title>
 </head>
 <body>
-    <!-- Navigation and Forms as you provided -->
-    
-    <!-- Poem Publishing Section -->
-    <div class="poem-publish" id="poemPublishSection" style="display: none;">
-        <h2>Publish Your Poem</h2>
-        <form id="poemForm">
-            <div class="input-field">
-                <label for="poemTitle">Poem Title</label>
-                <input type="text" name="poemTitle" id="poemTitle" placeholder="Enter title">
+    <div class="page">
+        <header class="nav">
+            <div class="nav-logo">B.Y.T.E.</div>
+            <nav class="nav-menu" id="navMenu">
+                <a class="nav-link" href="#home">Home</a>
+                <a class="nav-link" href="#publish">Publish</a>
+                <a class="nav-link" href="#public">Public Poems</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn ghost" id="openLogin">Login</button>
+                <button class="btn primary" id="openRegister">Sign Up</button>
+                <button class="btn ghost hidden" id="logoutBtn">Logout</button>
             </div>
-            <div class="input-field">
-                <label for="poemContent">Poem Content</label>
-                <textarea name="poemContent" id="poemContent" placeholder="Write your poem"></textarea>
-            </div>
-            <div class="input-field">
-                <input type="submit" value="Publish Poem">
-            </div>
-        </form>
+            <button class="nav-toggle" id="navToggle">
+                <i class="bx bx-menu"></i>
+            </button>
+        </header>
+
+        <main class="content">
+            <section class="hero" id="home">
+                <div class="hero-content">
+                    <p class="eyebrow">Publish your voice</p>
+                    <h1>Share your poems and let the world read them</h1>
+                    <p class="subtitle">Write, publish, and grow your poetry audience in one elegant space.</p>
+                    <div class="hero-actions">
+                        <a class="btn primary" href="#publish">Start Publishing</a>
+                        <a class="btn ghost" href="#public">Read Poems</a>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <h3>Community Highlights</h3>
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <span class="stat-value" id="poemCount">0</span>
+                            <span class="stat-label">Poems shared</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="authorCount">0</span>
+                            <span class="stat-label">Authors</span>
+                        </div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag">Free to publish</span>
+                        <span class="tag">Public by default</span>
+                        <span class="tag">Clean reading</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section auth-section" id="auth">
+                <div class="auth-layout">
+                    <div class="auth-info">
+                        <p class="eyebrow">Welcome</p>
+                        <h2 class="auth-title">Log in or create your poet profile</h2>
+                        <p class="auth-copy">Save your drafts, publish in seconds, and keep your identity consistent across the community.</p>
+                        <div class="auth-highlights">
+                            <div>
+                                <h4>Secure login</h4>
+                                <p>JWT-based sessions keep you signed in across refreshes.</p>
+                            </div>
+                            <div>
+                                <h4>Public by default</h4>
+                                <p>Your poems appear instantly in the public gallery.</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a class="social-link" href="https://github.com/Arshkumar-elite" target="_blank" rel="noreferrer">
+                                <i class="fa-brands fa-github"></i>
+                                GitHub
+                            </a>
+                            <a class="social-link" href="https://www.linkedin.com/in/arsh-kumar-elite/" target="_blank" rel="noreferrer">
+                                <i class="fa-brands fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                    <div class="auth-card">
+                        <div class="auth-tabs">
+                            <button class="tab active" data-tab="login">Login</button>
+                            <button class="tab" data-tab="register">Register</button>
+                        </div>
+                        <form id="loginForm" class="form tab-panel active" autocomplete="on">
+                            <label class="label" for="loginUsernameOrEmail">Email or First Name</label>
+                            <input class="input" type="text" id="loginUsernameOrEmail" name="loginUsernameOrEmail" placeholder="you@email.com or Ava" required>
+                            <label class="label" for="loginPassword">Password</label>
+                            <input class="input" type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required>
+                            <button class="btn primary full" type="submit">Login</button>
+                        </form>
+                        <form id="registrationForm" class="form tab-panel" autocomplete="on">
+                            <div class="grid-two">
+                                <div>
+                                    <label class="label" for="firstname">First Name</label>
+                                    <input class="input" type="text" id="firstname" name="firstname" placeholder="Ava" required>
+                                </div>
+                                <div>
+                                    <label class="label" for="lastname">Last Name</label>
+                                    <input class="input" type="text" id="lastname" name="lastname" placeholder="Carter" required>
+                                </div>
+                            </div>
+                            <label class="label" for="email">Email</label>
+                            <input class="input" type="email" id="email" name="email" placeholder="ava@email.com" required>
+                            <label class="label" for="password">Password</label>
+                            <input class="input" type="password" id="password" name="password" placeholder="Minimum 6 characters" required>
+                            <button class="btn primary full" type="submit">Create Account</button>
+                        </form>
+                        <div class="message" id="authMessage"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="publish">
+                <div class="publish-card">
+                    <div class="section-header">
+                        <div>
+                            <h2>Publish a Poem</h2>
+                            <p id="publishHint">Login to unlock the publishing form.</p>
+                        </div>
+                        <div class="user-badge" id="userBadge"></div>
+                    </div>
+                    <form id="poemForm" class="form hidden">
+                        <label class="label" for="poemTitle">Poem Title</label>
+                        <input class="input" type="text" name="poemTitle" id="poemTitle" placeholder="A title that captures the feeling" required>
+                        <label class="label" for="poemContent">Poem Content</label>
+                        <textarea class="textarea" name="poemContent" id="poemContent" placeholder="Write your poem with line breaks" required></textarea>
+                        <button class="btn primary full" type="submit">Publish Poem</button>
+                    </form>
+                    <div class="message" id="poemMessage"></div>
+                </div>
+            </section>
+
+            <section class="section" id="public">
+                <div class="section-header">
+                    <div>
+                        <h2>Public Poems</h2>
+                        <p>Every poem published here is visible to everyone.</p>
+                    </div>
+                    <button class="btn ghost" id="refreshPoems">Refresh</button>
+                </div>
+                <div class="poem-grid" id="poemList"></div>
+                <div class="empty-state hidden" id="emptyState">No poems yet. Be the first to publish.</div>
+            </section>
+        </main>
     </div>
-    
+
     <script>
-        function myMenuFunction() {
-            // Menu Toggle
-        }
-        
-        // Login and registration script
         document.addEventListener('DOMContentLoaded', function () {
-            const registerForm = document.getElementById('registrationForm');
-            registerForm.addEventListener('submit', function (event) {
+            const API_BASE = 'http://localhost:8001';
+            const authMessage = document.getElementById('authMessage');
+            const poemMessage = document.getElementById('poemMessage');
+            const poemForm = document.getElementById('poemForm');
+            const publishHint = document.getElementById('publishHint');
+            const userBadge = document.getElementById('userBadge');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const openLogin = document.getElementById('openLogin');
+            const openRegister = document.getElementById('openRegister');
+            const refreshPoems = document.getElementById('refreshPoems');
+            const poemList = document.getElementById('poemList');
+            const emptyState = document.getElementById('emptyState');
+            const poemCount = document.getElementById('poemCount');
+            const authorCount = document.getElementById('authorCount');
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            const tabs = Array.from(document.querySelectorAll('.tab'));
+            const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+
+            const state = {
+                user: null,
+                token: null,
+                poems: []
+            };
+
+            const setMessage = (element, message, type) => {
+                element.textContent = message;
+                element.className = `message ${type || ''}`.trim();
+            };
+
+            const showTab = (tabName) => {
+                tabs.forEach(tab => {
+                    tab.classList.toggle('active', tab.dataset.tab === tabName);
+                });
+                tabPanels.forEach(panel => {
+                    panel.classList.toggle('active', panel.id === `${tabName}Form`);
+                });
+                document.getElementById('auth').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            const getDisplayName = (user) => {
+                if (!user) return '';
+                const fullName = `${user.firstname} ${user.lastname}`.trim();
+                return fullName || user.email;
+            };
+
+            const updateAuthUI = () => {
+                const isLoggedIn = Boolean(state.user);
+                poemForm.classList.toggle('hidden', !isLoggedIn);
+                publishHint.textContent = isLoggedIn
+                    ? 'Your poem will be visible to everyone.'
+                    : 'Login to unlock the publishing form.';
+                userBadge.textContent = isLoggedIn ? `Publishing as ${getDisplayName(state.user)}` : '';
+                userBadge.classList.toggle('hidden', !isLoggedIn);
+                logoutBtn.classList.toggle('hidden', !isLoggedIn);
+                openLogin.classList.toggle('hidden', isLoggedIn);
+                openRegister.classList.toggle('hidden', isLoggedIn);
+                setMessage(poemMessage, '', '');
+            };
+
+            const setAuthState = (user, token) => {
+                state.user = user;
+                state.token = token;
+                if (token) {
+                    localStorage.setItem('byteToken', token);
+                } else {
+                    localStorage.removeItem('byteToken');
+                }
+                localStorage.setItem('byteUser', JSON.stringify(user));
+                updateAuthUI();
+            };
+
+            const clearAuthState = () => {
+                state.user = null;
+                state.token = null;
+                localStorage.removeItem('byteToken');
+                localStorage.removeItem('byteUser');
+                updateAuthUI();
+            };
+
+            const renderPoems = () => {
+                poemList.innerHTML = '';
+                if (!state.poems.length) {
+                    emptyState.classList.remove('hidden');
+                } else {
+                    emptyState.classList.add('hidden');
+                }
+                const authors = new Set();
+                state.poems.forEach(poem => {
+                    authors.add(poem.author);
+                    const card = document.createElement('article');
+                    card.className = 'poem-card';
+                    const title = document.createElement('h3');
+                    title.textContent = poem.title;
+                    const meta = document.createElement('div');
+                    meta.className = 'poem-meta';
+                    const date = new Date(poem.createdAt);
+                    meta.textContent = `${poem.author} · ${date.toLocaleDateString()}`;
+                    const content = document.createElement('p');
+                    content.className = 'poem-content';
+                    content.textContent = poem.content;
+                    card.append(title, meta, content);
+                    poemList.appendChild(card);
+                });
+                poemCount.textContent = state.poems.length;
+                authorCount.textContent = authors.size;
+            };
+
+            const fetchPoems = () => {
+                fetch(`${API_BASE}/poems`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            state.poems = data.poems || [];
+                            renderPoems();
+                        }
+                    })
+                    .catch(() => {
+                        setMessage(poemMessage, 'Unable to load poems right now.', 'error');
+                    });
+            };
+
+            const savedToken = localStorage.getItem('byteToken');
+            if (savedToken) {
+                fetch(`${API_BASE}/auth/me`, {
+                    headers: { Authorization: `Bearer ${savedToken}` }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            state.user = data.user;
+                            state.token = savedToken;
+                            localStorage.setItem('byteUser', JSON.stringify(data.user));
+                        } else {
+                            clearAuthState();
+                        }
+                        updateAuthUI();
+                    })
+                    .catch(() => {
+                        clearAuthState();
+                    });
+            } else {
+                updateAuthUI();
+            }
+
+            fetchPoems();
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => showTab(tab.dataset.tab));
+            });
+
+            openLogin.addEventListener('click', () => showTab('login'));
+            openRegister.addEventListener('click', () => showTab('register'));
+
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+            });
+
+            document.getElementById('registrationForm').addEventListener('submit', function (event) {
                 event.preventDefault();
+                setMessage(authMessage, '', '');
 
                 const userData = {
-                    firstname: document.getElementById('firstname').value,
-                    lastname: document.getElementById('lastname').value,
-                    email: document.getElementById('email').value,
-                    password: document.getElementById('password').value,
+                    firstname: document.getElementById('firstname').value.trim(),
+                    lastname: document.getElementById('lastname').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    password: document.getElementById('password').value.trim()
                 };
 
-                fetch('http://panel.mait.ac.in:8001/auth/register/', {
+                fetch(`${API_BASE}/auth/register`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(userData),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Registration Successful');
-                        window.location.href = "index.html";
-                    } else {
-                        alert('Registration failed');
-                    }
-                })
-                .catch(error => {
-                    alert('Registration failed');
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            if (!data.token) {
+                                setMessage(authMessage, 'Logged in without token. Publishing will still work in legacy mode.', 'error');
+                                setAuthState(data.user, null);
+                                return;
+                            }
+                            setAuthState(data.user, data.token);
+                            setMessage(authMessage, 'Registration complete. You can publish now.', 'success');
+                            showTab('login');
+                        } else {
+                            setMessage(authMessage, data.message || 'Registration failed.', 'error');
+                        }
+                    })
+                    .catch(() => {
+                        setMessage(authMessage, 'Registration failed. Try again.', 'error');
+                    });
             });
 
-            const loginForm = document.getElementById('loginForm');
-            loginForm.addEventListener('submit', function (event) {
+            document.getElementById('loginForm').addEventListener('submit', function (event) {
                 event.preventDefault();
+                setMessage(authMessage, '', '');
 
                 const loginData = {
-                    usernameOrEmail: document.getElementById('loginUsernameOrEmail').value,
-                    password: document.getElementById('loginPassword').value,
+                    usernameOrEmail: document.getElementById('loginUsernameOrEmail').value.trim(),
+                    password: document.getElementById('loginPassword').value.trim()
                 };
 
-                fetch('http://panel.mait.ac.in:8001/auth/login/', {
+                fetch(`${API_BASE}/auth/login`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(loginData),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(loginData)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Login Successful');
-                        const poemPublishSection = document.getElementById('poemPublishSection');
-                        poemPublishSection.style.display = 'block';
-                    } else {
-                        alert('Login failed');
-                    }
-                })
-                .catch(error => {
-                    alert('Login failed');
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            if (!data.token) {
+                                setMessage(authMessage, 'Logged in without token. Publishing will still work in legacy mode.', 'error');
+                                setAuthState(data.user, null);
+                                return;
+                            }
+                            setAuthState(data.user, data.token);
+                            setMessage(authMessage, 'Welcome back. You can publish now.', 'success');
+                            document.getElementById('publish').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else {
+                            setMessage(authMessage, data.message || 'Login failed.', 'error');
+                        }
+                    })
+                    .catch(() => {
+                        setMessage(authMessage, 'Login failed. Try again.', 'error');
+                    });
             });
 
-            const poemForm = document.getElementById('poemForm');
             poemForm.addEventListener('submit', function (event) {
                 event.preventDefault();
+                setMessage(poemMessage, '', '');
+                if (!state.user) {
+                    setMessage(poemMessage, 'Please log in first.', 'error');
+                    return;
+                }
 
                 const poemData = {
-                    title: document.getElementById('poemTitle').value,
-                    content: document.getElementById('poemContent').value,
+                    title: document.getElementById('poemTitle').value.trim(),
+                    content: document.getElementById('poemContent').value.trim(),
+                    author: getDisplayName(state.user)
                 };
 
-                fetch('http://panel.mait.ac.in:8001/poems', {
+                const headers = { 'Content-Type': 'application/json' };
+                if (state.token) {
+                    headers.Authorization = `Bearer ${state.token}`;
+                }
+
+                fetch(`${API_BASE}/poems`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(poemData),
+                    headers,
+                    body: JSON.stringify(poemData)
                 })
-                .then(response => {
-                    if (response.ok) {
-                        alert('Poem Published Successfully');
-                    } else {
-                        alert('Poem publishing failed');
-                    }
-                })
-                .catch(error => {
-                    alert('Poem publishing failed');
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            setMessage(poemMessage, 'Poem published successfully.', 'success');
+                            poemForm.reset();
+                            state.poems = [data.poem, ...state.poems];
+                            renderPoems();
+                            document.getElementById('public').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else {
+                            setMessage(poemMessage, data.message || 'Poem publishing failed.', 'error');
+                        }
+                    })
+                    .catch(() => {
+                        setMessage(poemMessage, 'Poem publishing failed. Try again.', 'error');
+                    });
             });
+
+            logoutBtn.addEventListener('click', () => {
+                clearAuthState();
+                setMessage(authMessage, 'Logged out successfully.', 'success');
+            });
+
+            refreshPoems.addEventListener('click', fetchPoems);
         });
     </script>
 </body>
