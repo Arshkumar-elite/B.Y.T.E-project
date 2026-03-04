@@ -156,7 +156,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const API_BASE = 'http://localhost:8001';
+            const apiParam = new URLSearchParams(window.location.search).get('api');
+            const API_BASE = (window.BYTE_API_BASE || apiParam || 'https://b-y-t-e-project.onrender.com').replace(/\/+$/, '');
             const authMessage = document.getElementById('authMessage');
             const poemMessage = document.getElementById('poemMessage');
             const poemForm = document.getElementById('poemForm');

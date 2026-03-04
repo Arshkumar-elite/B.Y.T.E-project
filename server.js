@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const app = express();
-const PORT = 8001;
+const PORT = process.env.PORT || 8001;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -56,6 +56,14 @@ const getUserFromToken = (req) => {
         return null;
     }
 };
+
+app.get('/', (req, res) => {
+    return res.status(200).json({
+        success: true,
+        message: 'B.Y.T.E. API is running',
+        routes: ['/auth/register', '/auth/login', '/auth/me', '/poems']
+    });
+});
 
 app.post('/auth/register', (req, res) => {
     const firstname = normalizeText(req.body.firstname);
